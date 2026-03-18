@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CreateGrade, Grade, UpdateGrade } from '../models/grade.model';
 
 @Injectable({
   providedIn: 'root',
@@ -18,12 +19,12 @@ export class GradeService {
     return this.http.get(`${this.api}/${id}`);
   }
 
-  create(data: any): Observable<any> {
-    return this.http.post(this.api, data);
+  create(data: CreateGrade): Observable<Grade> {
+    return this.http.post<Grade>(this.api, data);
   }
 
-  update(data: any): Observable<any> {
-    return this.http.put(this.api, data);
+  update(data: UpdateGrade): Observable<Grade> {
+    return this.http.put<Grade>(this.api, data);
   }
 
   delete(id: string): Observable<any> {

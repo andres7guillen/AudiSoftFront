@@ -1,16 +1,18 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { GradeService } from '../../../../core/services/grade.service';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-grade-detail.component',
-  imports: [],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './grade-detail.component.html',
 })
 export class GradeDetailComponent {
   private fb = inject(FormBuilder);
+  private router = inject(Router);
   gradeForm: FormGroup;
 
   constructor(
@@ -18,9 +20,10 @@ export class GradeDetailComponent {
     private service: GradeService,
   ) {
     this.gradeForm = this.fb.group({
-      id: [''],
-      name: ['', Validators.required],
-      value: [0, [Validators.required, Validators.min(0), Validators.max(5)]],
+      name: [''],
+      professorName: [''],
+      studentName: [''],
+      value: [0],
     });
   }
 
@@ -31,5 +34,9 @@ export class GradeDetailComponent {
       next: (res) => this.gradeForm.patchValue(res),
       error: (err) => Swal.fire('Error', err.error, 'error'),
     });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/grades']);
   }
 }

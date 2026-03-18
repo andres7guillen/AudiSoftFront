@@ -1,6 +1,9 @@
 <h2>Detail Student</h2>
 
+<button class="btn btn-primary btn-sm" (click)="goBack()">Volver</button>
 <form [formGroup]="form">
-    <input formControlName="name" readonly />
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input id="name" formControlName="name" readonly />
+    </div>
 </form>
-<p>student-detail.component works!</p>

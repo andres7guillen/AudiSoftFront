@@ -16,6 +16,10 @@ export class StudentService {
     return this.http.get<PagedResult<Student>>(`${this.api}?page=${page}&pageSize=${pageSize}`);
   }
 
+  getStudents() {
+    return this.http.get<PagedResult<Student>>(`${this.api}?page=1&pageSize=100`);
+  }
+
   getById(id: string): Observable<Student> {
     return this.http.get<Student>(`${this.api}/${id}`);
   }

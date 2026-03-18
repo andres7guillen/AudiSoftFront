@@ -31,4 +31,8 @@ export class ProfessorService {
   delete(id: string): Observable<boolean> {
     return this.http.delete<boolean>(`${this.api}/${id}`);
   }
+
+  getProfessors() {
+    return this.http.get<PagedResult<Professor>>(`${this.api}?page=1&pageSize=100`);
+  }
 }

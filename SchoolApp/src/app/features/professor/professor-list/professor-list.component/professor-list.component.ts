@@ -43,7 +43,6 @@ export class ProfessorListComponent {
   load() {
     this.service.getAll(this.page, this.pageSize).subscribe({
       next: (res) => {
-        console.log('DATAAAAAA', res);
         this.professors = res.items;
         this.totalCount = res.totalCount;
         this.cdr.detectChanges();
@@ -66,14 +65,14 @@ export class ProfessorListComponent {
 
   delete(id: string) {
     Swal.fire({
-      title: '¿Eliminar?',
+      title: 'Are you sure you want to remove the professor?',
       icon: 'warning',
       showCancelButton: true,
     }).then((r) => {
       if (r.isConfirmed) {
         this.service.delete(id).subscribe({
           next: () => {
-            Swal.fire('Eliminado', '', 'success');
+            Swal.fire('Removed', '', 'success');
             this.load();
           },
         });

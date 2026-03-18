@@ -1,7 +1,23 @@
-<h2>Edit Grade</h2>
+<h2>Create Grade</h2>
 
+<button class="btn btn-primary btn-sm" (click)="goBack()">Back</button>
 <form [formGroup]="gradeForm" (ngSubmit)="save()">
-    <input formControlName="id" hidden />
-    <input formControlName="name" />
-    <button type="submit">Actualizar</button>
+    <input formControlName="name" placeholder="Name" />
+
+    <select formControlName="professorId">
+        <option value="">Select Professor</option>
+        <option *ngFor="let p of professors" [value]="p.id">
+            {{ p.name }}
+        </option>
+    </select>
+
+    <select formControlName="studentId">
+        <option value="">Select Student</option>
+        <option *ngFor="let s of students" [value]="s.id">
+            {{ s.name }}
+        </option>
+    </select>
+
+    <input type="number" formControlName="value" placeholder="Value" />
+    <button type="submit">Save</button>
 </form>

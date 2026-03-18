@@ -36,6 +36,10 @@ export class ProfessorEditComponent {
     });
   }
 
+  goBack(): void {
+    this.router.navigate(['/professors']);
+  }
+
   save() {
     if (this.form.invalid) return;
 

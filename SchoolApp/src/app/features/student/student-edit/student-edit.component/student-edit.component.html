@@ -1,5 +1,6 @@
 <h2>Edit Student</h2>
 
+<button class="btn btn-primary btn-sm" (click)="goBack()">Volver</button>
 <form [formGroup]="form" (ngSubmit)="save()">
     <input formControlName="id" hidden />
     <input formControlName="name" />

@@ -1,1 +1,9 @@
-<p>grade-edit.component works!</p>
+<h2>Edit Grade</h2>
+
+<button class="btn btn-primary btn-sm" (click)="goBack()">Back</button>
+<form [formGroup]="form" (ngSubmit)="save()">
+    <input formControlName="name" placeholder="Name" />
+
+    <input type="number" formControlName="value" placeholder="Value" />
+    <button type="submit">Save</button>
+</form>

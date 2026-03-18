@@ -36,6 +36,10 @@ export class StudentEditComponent {
     });
   }
 
+  goBack(): void {
+    this.router.navigate(['/students']);
+  }
+
   save() {
     if (this.form.invalid) return;
 

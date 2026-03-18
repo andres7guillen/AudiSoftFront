@@ -23,6 +23,10 @@ export class StudentCreateComponent {
     private router: Router,
   ) {}
 
+  goBack(): void {
+    this.router.navigate(['/students']);
+  }
+
   save() {
     if (this.form.invalid) return;
 

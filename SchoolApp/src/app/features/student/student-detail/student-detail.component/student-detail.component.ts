@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { StudentService } from '../../../../core/services/student.service';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class StudentDetailComponent {
   private fb = inject(FormBuilder);
+  private router = inject(Router);
 
   form: FormGroup = this.fb.group({
     id: [''],
@@ -29,5 +30,9 @@ export class StudentDetailComponent {
     this.service.getById(id).subscribe({
       next: (res) => this.form.patchValue(res),
     });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/students']);
   }
 }

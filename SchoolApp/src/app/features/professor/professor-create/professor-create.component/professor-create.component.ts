@@ -22,6 +22,10 @@ export class ProfessorCreateComponent {
     private router: Router,
   ) {}
 
+  goBack(): void {
+    this.router.navigate(['/professors']);
+  }
+
   save() {
     if (this.form.invalid) return;
 
