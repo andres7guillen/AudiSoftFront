@@ -1,0 +1,7 @@
+<h2>Edit Grade</h2>
+
+<form [formGroup]="gradeForm" (ngSubmit)="save()">
+    <input formControlName="id" hidden />
+    <input formControlName="name" />
+    <button type="submit">Actualizar</button>
+</form>

@@ -1,0 +1,13 @@
+<h2>Students</h2>
+
+<button (click)="create()">Crear</button>
+
+<ul>
+    <li *ngFor="let s of students">
+        {{ s.name }}
+
+        <button (click)="detail(s.id)">Ver</button>
+        <button (click)="edit(s.id)">Editar</button>
+        <button (click)="delete(s.id)">Eliminar</button>
+    </li>
+</ul>
